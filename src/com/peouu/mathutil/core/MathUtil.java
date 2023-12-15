@@ -13,7 +13,7 @@ public class MathUtil {
     // clone class Math cua JDK
     // ham thu vien xai chung cho ai do khong can luu lai trang thai gia tri
     //chon thiet ke la ham static
-    
+
     // ham giai thua!!!
     //n! = 1.2.3.4.... n
     // khong co giai thua cho so am
@@ -21,15 +21,33 @@ public class MathUtil {
     // giai thua ham do thi doc dung, tang nhanh ve giá tri
     // 20 iai thua 19 con so 0, vua kip du cho ieu long cua Java
     //21 bi tran kieu long
-    public static long getFactorial(int n){
-        if(n<0 || n>20)
+//   public static long getFactorial(int n){
+//        if(n<0 || n>20)
+//            throw new IllegalArgumentException("Invalid argument. N must be between from 1 to 20");
+//        if(n==0 || n ==1)
+//            return 1;
+//        long product =1; 
+//        for (int i = 2; i <= n; i++) 
+//            product *= i;
+//            return product;
+//        }
+    // de quy -recursion
+    // de quy la hien tuong goi lai chinh minh voi 1 quy mo khac
+    // n! = 1.2.3.4.5.6...n
+    //6!= 6 x 5!
+    //5!= 5 x 4!
+    // ....
+    //2!= 2x1!
+    //1!= 1;
+    // quy uoc 1! =0! =1
+    // => n!= n.(n-1)!
+    public static long getFactorial(int n) {
+        if (n < 0 || n > 20) {
             throw new IllegalArgumentException("Invalid argument. N must be between from 1 to 20");
-        if(n==0 || n ==1)
-            return 1;
-        long product =1; 
-        for (int i = 2; i <= n; i++) 
-            product *= i;
-            return product;
         }
-    
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * getFactorial(n - 1);
+    }
 }
